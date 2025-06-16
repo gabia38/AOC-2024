@@ -12,7 +12,7 @@ int main()
 
         matrix.push_back(line);
     }
-    int n=matrix.size(),m=matrix[0].size();
+    int m=matrix.size(),n=matrix[0].size();
     int  costs=0;
     for(int i=0; i<m; i++)
     {
