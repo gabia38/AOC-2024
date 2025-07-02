@@ -8,7 +8,6 @@ using namespace std;
 int main()
 {
     multimap<string,string> connections;
-    set<string> computers;
     string a,b,line;
     while(cin>>line)
     {
@@ -16,8 +15,6 @@ int main()
         b=line.substr(3,2);
         connections.insert({a,b});
         connections.insert({b,a});
-        computers.insert(a);
-        computers.insert(b);
     }
     set<tuple<string,string,string>> rez;
     for(auto it1:connections)
@@ -30,7 +27,6 @@ int main()
                 if(it2->first[0]=='t'||it2->second[0]=='t'||it3->second[0]=='t')
                 {
                     auto range2=connections.equal_range(it2->second);
-                    int ok=0;
                     for(auto it4=range2.first; it4!=range2.second; it4++)
                     {
                         if(it4->second==it3->second)
@@ -49,7 +45,6 @@ int main()
                                 swap(y,z);
                             }
                             rez.insert({x,y,z});
-                            ok=1;
                             break;
                         }
                     }
@@ -59,6 +54,5 @@ int main()
         }
     }
     cout<< rez.size()<< endl;
-    cout<<computers.size();
     return 0;
 }
